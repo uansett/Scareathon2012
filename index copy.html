@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>THEHORROR</title>
+    <link href='http://fonts.googleapis.com/css?family=Ranchers' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script>
+      if (window!=top){top.location.href=location.href;}
+      document.createElement('header');
+      document.createElement('nav');
+      document.createElement('section');
+      document.createElement('article');
+      document.createElement('aside');
+      document.createElement('footer');
+      document.createElement('time');
+      
+      $(document).ready(function(){
+            $('#overlay2').hide();
+		var blurred = false;
+      document.onkeypress = function(e) {
+    e = e || window.event;
+    var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+    if (charCode == 32) {
+    	swapOverlay();
+        // a = 97 s = 115 d = 100 w = 119
+        // f = 102 space = 32
+    }else if(charCode == 102){
+    	$(body).append('<img class="blood" width="140px" src="blood.png"/>');
+        moveBloody('.blood',50,500,10,400);
+    }else if(charCode == 119){
+    	var ghostsnd = new Audio("ghost.mp3");
+    	$(body).append('<img class="spider" width="120px" src="tarantula2.png"/>');
+        moveBloody('.spider',50,500,10,400);
+        ghostsnd.play();
+    }else if(charCode == 100){
+    	var screamSnd = new Audio("screamm.m4a");
+    	screamSnd.play();
+    	$(body).append('<img class="spider" width="100px" src="skull.png"/>');
+        moveBloody('.spider',50,500,10,400);
+    }else if(charCode == 97){
+    if(blurred){
+    	$('.camWindow').removeClass('blurry');
+    	blurred = false;
+    	}else{
+    	$('.camWindow').addClass('blurry');
+		blurred = true;
+    	}
+    }
+};
+
+function moveBloody(what,n,m,n2,m2){
+	$(what+':last').css('left',Math.floor(Math.random()*(n-m+1))+m);
+	$(what+':last').css('top',Math.floor(Math.random()*(n2-m2+1))+m2);
+	
+}
+      });
+      
+      // OKAY; lets make scary
+      
+      function swapOverlay(){
+      var snd = new Audio("GhostCompilation1.mp3");
+      var snd2 = new Audio("ghost.mp3");
+      $('#overlay').hide();
+      $('.camWindow').addClass('sepiaStyle');
+      $('#overlay2').show();
+      snd2.play();
+      snd.play();
+      }
+      
+    </script>
+  </head>
+  <body>
+
+
+    <header>
+      <h1>THEHORROR</h1>
+    </header>
+    <div id="body">
+    <div id="infoWindow"><h2>Poke inside a cup to add effects. <br /><br /><br /> Create your hallloweeEen picture!</h2><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.stiandev.com%2Fscare&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=dark&amp;font&amp;height=80&amp;appId=410014595731118" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe></div>
+    <div class="camWindow">
+		<img id="overlay" src="overlay_nice.png" />
+		<img id="overlay2" src="overlay.png" />
+      <video autoplay="autoplay"></video>
+      </div>
+      
+      <ul class="effects">
+        <li><a href="#" class="button blue" data-effect="grayscale">Grayscale</a></li>
+        <li><a href="#" class="button blue" data-effect="sepia">Sepia</a></li>
+        <li><a href="#" class="button blue" data-effect="blur">Blur</a></li>
+        <li><a href="#" class="button blue" data-effect="brightness">Brightness</a></li>
+        <li><a href="#" class="button blue" data-effect="contrast">Contrast</a></li>
+        <li><a href="#" class="button blue" data-effect="hue-rotate-90">Hue rotate (90°)</a></li>
+        <li><a href="#" class="button blue" data-effect="hue-rotate-180">Hue rotate (180°)</a></li>
+        <li><a href="#" class="button blue" data-effect="hue-rotate-270">Hue rotate (270°)</a></li>
+        <li><a href="#" class="button blue" data-effect="saturate">Saturate</a></li>
+        <li><a href="#" class="button blue" data-effect="invert">Invert</a></li>
+      </ul>
+    </div>
+    <script src="js/ScreenCast.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
